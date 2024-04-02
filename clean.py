@@ -1,12 +1,14 @@
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
-from eganetswahiliclearner.cleaner import clean_text
+from eganetswahiliclearner.cleaner import clean_text # dedicated Swahili cleaner
 
 # Download NLTK stopwords
 nltk.download('stopwords')
 
 class MyCleaner:
+
+    # typos, slang, and stop-words datasets come from a Swahili published paper.
     def __init__(self, typos_file, slang_file, stopwords_file, df):
         self.typos_file = typos_file
         self.slang_file = slang_file
@@ -54,15 +56,11 @@ class MyCleaner:
         swahili_stopwords = set(stopwords_data['StopWords'])
         all_stopwords = english_stopwords.union(swahili_stopwords)
 
-
-        # Apply stop words removal
         df['Tweets'] = df['Tweets'].apply(lambda x: self.remove_stopwords(x, all_stopwords))
 
-        # Resolve slang in dataframe
         slang_correction_map = dict(zip(slang_data['Slang'], slang_data['Meaning']))
         df = self.resolve_slang_in_dataframe(df, slang_correction_map, "Tweets")
 
-        # Correct typos in dataframe
         typo_correction_map = dict(zip(typos_data['Typo'], typos_data['Word']))
         df = self.correct_typos_in_dataframe(df, typo_correction_map, "Tweets")
 
