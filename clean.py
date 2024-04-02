@@ -1,10 +1,9 @@
 import pandas as pd
 import nltk
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 from eganetswahiliclearner.cleaner import clean_text # dedicated Swahili cleaner
 
-# Download NLTK stopwords
-nltk.download('stopwords')
 
 class MyCleaner:
 
@@ -51,10 +50,9 @@ class MyCleaner:
     def final_clean(self):
         typos_data, slang_data, stopwords_data = self.read_files()
 
-        # Combine English and Swahili stopwords
         english_stopwords = set(stopwords.words('english'))
         swahili_stopwords = set(stopwords_data['StopWords'])
-        all_stopwords = english_stopwords.union(swahili_stopwords)
+        all_stopwords = english_stopwords.union(swahili_stopwords)  # COMBINE 
 
         df['Tweets'] = df['Tweets'].apply(lambda x: self.remove_stopwords(x, all_stopwords))
 
@@ -71,4 +69,7 @@ def cleaner(df):
     cleaner = MyCleaner("Common Swahili Typos.csv", "Common Swahili Slang.csv", "Common Swahili Stop-words.csv", df)
     df['Tweets'] = df['Tweets'].apply(clean_text)
     df = cleaner.final_clean()
+    df.rename(columns={'Labels': 'labels'}, inplace=True) # TRAINER LABEL BENCHMARK NAME
+    labe_map = {0:0, 1:1, -2:2}  # CUDA NEEDS POSITIVE
+    df["Labels"].map(labe_map)
     return df

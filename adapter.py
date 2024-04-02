@@ -37,8 +37,9 @@ training_args = TrainingArguments(
     logging_strategy="epoch"
 )
 
-# Define the training function
+
 def train_adapter():
+
     def compute_metrics(eval_pred):
         predictions, labels = eval_pred
         predictions = torch.argmax(predictions, dim=1)
@@ -48,7 +49,7 @@ def train_adapter():
     adapter_setup = Stack([ActivationControl.setup_adapter_adapter_composition(),
                            Fuse("adapters")])
 
-    # Train the adapter
+    
     trainer = Trainer(
         model=model,
         args=training_args,

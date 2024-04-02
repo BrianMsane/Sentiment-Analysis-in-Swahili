@@ -1,13 +1,13 @@
 import streamlit as st
 from streamlit import components
-
-from transformers import (pipeline, AutoTokenizer, AutoModelForSequenceClassification)
+from transformers import (BertTokenizer, BertForSequenceClassification)
 from transformer_intepret import SequenceClassificationExplainer
 
 
 def load_model():
-    tokenizer = AutoTokenizer.from_pretrain("d4data/bias-detection-model")
-    model = AutoModelForSequenceClassification.from_pretrain("d4data/bias-detection-model", from_tf=True)
+    model_name = 'drive/MyDrive/HuggingFace/SwahBERT'
+    tokenizer = BertTokenizer.from_pretrain(model_name)
+    model = BertForSequenceClassification.from_pretrain(model)
 
     return model, tokenizer
 
