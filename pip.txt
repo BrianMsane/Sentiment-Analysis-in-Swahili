@@ -1,7 +1,0 @@
-# MAKE SURE TO INSTALL THESE MODULES IN THE ENV.
-
-!pip install eganetswahiliclearner=0.1.0
-!pip install "tensorflow>=2.0.0"
-!pip install --upgrade tensorflow-hub
-!pip install -qq adapters
-!pip install transformers-interpret
