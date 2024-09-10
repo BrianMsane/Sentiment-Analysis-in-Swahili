@@ -1,7 +1,0 @@
-1. Please use Google colab to run the code and on a T4 Runtime.
-2. Run all can be selected to automate cell running. 
-3. The code gets the new version of accelerate and will require you to restart the runtime and run all the cells. 
-   The point will be indicated by the code breaking as you run all cells.
-4. The cells will run one after the other so the run all can be used to automate that.
-5. As the code runs new files will be created and used by the code.
-6. For the data, attach the necessary files.
