@@ -13,3 +13,9 @@ Such solutions could be used by banking, insurance companies, or social media in
 <li> The cells will run one after the other so the run all can be used to automate that.
 <li> As the code runs new files will be created and used by the code.
 <li> For the data, attach the necessary files.
+
+## Reward
+This work was the third place winner for the Google NLP Hack Series: Swahili Social Media Sentiment Analysis Challenge hosted in zindi :)
+<p align="center">
+  <img src="./img/uno-Google%20NLP%20Hack%20Series_%20Swahili%20Social%20Media%20Sentiment%20Analysis%20Challenge.png" width="350" title="certificate">
+</p>
